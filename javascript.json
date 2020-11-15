@@ -1,0 +1,476 @@
+{
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Hoisting 01": {
+		"prefix": "hoisting_01",
+		"body": [
+			"// hoisting ",
+			"let result = getValue(${1:b});",
+			"function getValue(condition) {",
+    		"if(condition) {",
+        	"var value = \"scoped\";",
+        	"console.log(value);",
+        	"return value;",
+    		"} else {",
+			"return null;",
+			"}",
+			"// value unavailable here"
+		],
+			"description": "Hoisting"
+		},
+	"Hoisting 02": {
+			"prefix": "hoisting_02",
+			"body": [
+				"// only declarations are hoisted ",
+				"console.log(num); // Returns undefined",
+				"let num;",
+				"num = ${1:b};"
+			],
+				"description": "Hoisting test"
+			},
+	"letAndConst" : {
+		"prefix": "letAndConst_03",
+		"body" : [
+			"let testVar = ${1:a};",
+			"const API_KEY = ${2:b};"
+		],
+		"description": "Let and Const usage"
+	},
+	"scope": {
+		"prefix": "scope_04",
+		"body": [
+			"let x = ${1:x};",
+			"function methodCall() {",
+    		"console.log('print2', x);",
+    		"let x = 2;",
+    		"console.log('print3', x);",
+    		"if (true) {",
+        	"let x = 3;",
+        	"let y = 3;",
+        	"console.log('print4', x, y);",
+    		"}",
+    	"console.log('print5', x, y);",
+		"}",
+		"console.log('print1', x);",
+		"methodCall();"
+		],
+		"description": "Scope"
+	},
+	"redeclarations" : {
+		"prefix": "scope_05",
+		"body": [
+			"var count = ${1:a};",
+			"if (${2:c}) {",
+			"let count = 40;",
+			"console.log(count);",
+			"}"
+		],
+		"description": ""
+	},
+	"TDZ" : {
+		"prefix": "tdz_06",
+		"body": [
+			"if (${1:c}) {",
+			"console.log(typeof c);",
+			"let value = \"blue\";",
+			"}"
+		],
+		"description": "Temporary dead zone"
+	},
+	"Destructuring of objects":{
+		"prefix": "destructuring_07",
+		"body": [
+			"//Dont forget initializer let {type}; causes syntax error",
+			"let type = 'Variable One'",
+			"let name = 'Variable Name';",
+			"let node = {",
+				"type: 'Type One',",
+				"name: 'Name One'",
+			"}",
+			"({",
+				"type,",
+				"name",
+			"} = node);",
+			"let {",
+				"type: myType",
+			"} = node;"
+
+		],
+		"description": "Destructuring"
+	},
+	"Destructur of objects":{
+		"prefix": "destructuring_08",
+		"body": [
+			"const nodeArr = [1, 2, 3, 4, 5, [8, 9, 7]];",
+			"let [one, two, three, , five] = nodeArr;",
+			"let [first, ...rest] = nodeArr;",
+			"let [, , , , , [...inner]] = nodeArr;"
+		],
+		"description": "Destructuring"
+	},
+	"Rest operator":{
+		"prefix": "rest_09",
+		"body": [
+			"const nodeArr = [1, 2, 3, 4, 5, [8, 9, 7]];",
+			"let [one, two, three, , five] = nodeArr;",
+			"let [first, ...rest] = nodeArr;",
+			"let [, , , , , [...inner]] = nodeArr;"
+		],
+		"description": "Destructuring"
+	},
+	"Rest operator 2":{
+		"prefix": "rest_10",
+		"body": [
+			
+			"function pick(param, ...keys) {",
+			"let result = Object.create(null);",
+			"for(let i = 0, len = keys.length; i<len;i++) {",
+			"result[keys[i]] = object[keys[i]];",
+			"}",
+			"return result;",
+			"}",
+			"let res= pick(0,87,684956,'awesome');",
+			"console.log(res);"
+			
+		],
+		"description": "Rest operator"
+	},
+	"Rest operator 2":{
+		"prefix": "spread_10",
+		"body": [
+			
+			"function pick(param, ...keys) {",
+			"let result = Object.create(null);",
+			"for(let i = 0, len = keys.length; i<len;i++) {",
+			"result[keys[i]] = object[keys[i]];",
+			"}",
+			"return result;",
+			"}",
+			"let res= pick(0,87,684956,'awesome');",
+			"console.log(res);"
+			
+		],
+		"description": "Rest operator"
+	},
+	"String Interpolation":{
+		"prefix": "interpolation_11",
+		"body": [
+			
+			"const obvod = 2 * PI * R;",
+			"console.log(`Obvod kruhu ${obvod}`);",
+			"console.log(`${Math.random()*40}`);",
+			"var MultiLineText = `",
+			"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+			"Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam.",
+			"Nullam at arcu a est sollicitudin euismod.",
+			"Nam quis nulla. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est.",
+			"`;"
+		],
+		"description": "Interpolations"
+	},
+	
+
+	"Set, WeakSet":{
+		"prefix": "sets_12",
+		"body": [
+			"let set = new Set();",
+			"set.add(5);",
+			"set.add(\"5\");",
+			"console.log(set.size); //2"
+		],
+		"description": "Sets"
+	},
+	"WeakSet":{
+		"prefix": "weaksets_13",
+		"body": [
+			"let weakSet = new WeakSet();",
+			"let weakobject = Object.assign({}, {",
+			"name: \"awesome\"",
+			"});",
+			"// weak set can contains only objects",
+			"weakSet.add(weakobject);",
+			"weakobject = undefined;",
+			"console.log(\"Weak set\", weakSet);"
+		],
+		"description": "Sets"
+	},
+	"Map":{
+		"prefix": "maps_14",
+		"body": [
+			"// Map is a key value collection ordered",
+			"let map = new Map([",
+			"[weakobject, \"name\"]",
+			"[\"key\", \"value\"]",
+			"]);",
+
+		],
+		"description": "maps"
+	},
+	"WeakMap":{
+		"prefix": "weakmaps_15",
+		"body": [
+		"let obj = {keys:'Key'}",
+		"let weakmap = new WeakMap([",
+   		"[obj, \"Val;ue\"]",
+		"]);",
+		"console.log(\"Weakmap\", weakmap);"
+		],
+		"description": "weakmaps"
+	},
+
+	
+	"Arrow15":{
+		"prefix": "arrowFunction_15_expression_body",
+		"body": [
+			"let nums = [1,2,3,4,5,6,7,8,9,10];",
+			  "let odds = nums.map(v => v + 1);",
+			  "let pairs = nums.map(v => ({ even: v, odd: v + 1 }));",
+			  "let transformed = nums.map((v, i) => v + i);",
+			  "console.log('odds', odds);",
+			  "console.log('pairs', pairs);",
+			  "console.log('transformed', transformed);"
+		],
+		"description": "arrowFunction"
+	},
+	"arrow153":{
+		"prefix": "arrowFunction_15_statement_body",
+		"body": [
+			  "let fives = [];",
+			  "nums.forEach(v => {",
+				"if(v % 5 === 0) {",
+				  "fives.push(v);}",
+				  "});",
+				  "console.log('fives',fives);"
+			  ],
+		"description": "arrowFunction"
+	},
+	"Generator":{
+		"prefix": "geneartor_16",
+		"body": [
+			"// Generator is a functions that returns iterator",
+				
+				"*createIterator() {",
+					"yield 1;",
+					"yield 2;",
+					"yield 3;",
+					"}",
+					],
+		"description": "generator"
+	},
+	"Iterator":{
+		"prefix": "iterator_17",
+		"body": [
+			"// Generator is a functions that returns iterator",
+			"// Iterator is an object designed with specific interface for iteratig collections",
+			"class IteratorClass {",
+			"*createIterator() {",
+				"yield 1;",
+				"yield 2;",
+				"yield 3;",
+				"}",
+				"}",
+			"let iteratorCls = new IteratorClass();",
+			"let iterator = iteratorCls.createIterator();",
+			"for(const item of iterator) {",
+			"console.log(item);",
+			"}",
+			"console.log(iterator.next());",
+			"console.log(iterator.next());",
+			"console.log(iterator.next());",
+			"console.log(iterator.next());"
+			
+		],
+			
+		"description": "generator"
+	},
+	"Iterator":{
+		"prefix": "iterator_17_function_expr",
+		"body": [
+			"let createIterator = function *(items) {",
+			"for(let i = 0; i < items.length; i++) {",
+			"yield items[i];",
+			"}",
+			"};",
+			"let iterator = createIterator([1,2,3]);"
+		],
+			
+		"description": "generator"
+	},
+	"Iterator 18":{
+		"prefix": "iterator_18",
+		"body": [
+		"// THIS IS GENERATOR a function that returns Iterator",
+		"function * iteratorWithParams() {",
+    	"let first = yield 1;",
+    	"let second = yield first + 2;",
+    	 "yield second + 3;",
+ 		"}",
+ 		"let iteratorFromGenerator = iteratorWithParams();",
+ 		"console.log(iteratorFromGenerator.next());",
+ 		"console.log(iteratorFromGenerator.next(4));",
+ 		"console.log(iteratorFromGenerator.next(5));",
+ 		"console.log(iteratorFromGenerator.next());"
+			],
+		"description": "generator"
+	},
+	"Iterator 19":{
+		"prefix": "iterator_19",
+		"body": [
+			"// Throwing Errors in Iterators",
+			" // Iterators can implement throw() method",
+			" function *iteratorErrorGen() {",
+			"     let first = yield 1;",
+			"     let second = yield first +2;",
+			"     yield second + 3;",
+			" }",
+			" let iteratorError = iteratorErrorGen();",
+			" console.log(iteratorError.next());",
+			" console.log(iteratorError.next(4));",
+			" try {",
+			" console.log(iteratorError.throw(new Error("Boom")));",
+			" }",
+			" catch(err) {",
+			"     console.log(err.message);",
+			" }",
+			" function *iteratorWithCatch() {",
+			"     let first = yield 1;",
+			"     let second;",
+			"     try {",
+			"         second = yield first + 2;",
+			"     } catch (ex) {",
+			"         second = 6;",
+			"     }",
+			"     yield second + 3;",
+			" }",
+			" let iteratorCatch = iteratorWithCatch();",
+			" console.log(iteratorCatch.next());",
+			" console.log(iteratorCatch.next(4));",
+			" console.log(iteratorCatch.throw(new Error("Dynamite")));",
+			" console.log(iteratorCatch.next());"
+			],
+		"description": "generator"
+	},
+	"Iterator 20":{
+		"prefix": "iterator_20",
+		"body": [
+				"// Generator return statement",
+ 				"// Return indicates that no more values are to come",
+ 				"function *createReturnIterator() {",
+				"yield 1;",
+				"//return;",
+				"// there is also possible indicate return value return 42;",
+				"return 42; // \"{value: 42, done:true}\"",
+				"yield 2;",
+				"yield 3;",
+				"}",
+				"let generatorReturn = createReturnIterator();",
+				"console.log(generatorReturn.next());",
+				"console.log(generatorReturn.next());",
+				"console.log(generatorReturn.next());"
+			],
+		"description": "generator"
+	},
+	"Iterator 21":{
+		"prefix": "iterator_21",
+		"body": [
+			 "// For-of and spread ignore value of return they match done true and stop iterating",
+			"//Delegating generators",
+			"function *generatorFirst() {",
+				"yield 1;",
+				"yield 4;",
+				"yield 6;",
+				"}",
+			"function *generatorSecond() {",
+				"yield 10;",
+				"yield 40;",
+				"yield 60;",
+			"}",
+			"console.log(\"Combined generators\");",
+			"function *combineGenerators() {",
+				"yield *generatorFirst();",
+				"yield *generatorSecond();",
+				"yield true;",
+			"}",
+			"let combinedGen = combineGenerators();",
+			"for(let entry of combinedGen) {",
+				"console.log(entry);",
+			"}"	
+		],
+		"description": "generator"
+	},
+	"Import 22":{
+		"prefix": "import_syntax_26",
+		"body": [
+			"//include / ./ ../ at the begining due to compatibility with browsers"
+			"import defaultExport from \"./modules/module1\";",
+			"import * as name from \"./modules/module1\";",
+			"import { export } from \"./modules/module1\";",
+			"import { export as alias } from \"./modules/module1\";",
+			"import { export1 , export2 } from \"./modules/module1\";",
+			"import { export1 , export2 as alias2 , [...] } from \"./modules/module1\";",
+			"import defaultExport, { export [ , [...] ] } from \"./modules/module1\";",
+			"import defaultExport, * as name from \"./modules/module1\";",
+			"import \"./modules/module1\";"
+		],
+		"description": "generator"
+	},
+	"Import 22":{
+		"prefix": "reexport_27",
+		"body": [
+			"//include / ./ ../ at the begining due to compatibility with browsers"
+			"import sum from \"./modules/module1\";",
+			"export {sum};",
+			"export {sum as add};",
+			"export * from \"./modules/module1\";"
+		],
+		"description": "generator"
+	},
+
+	"Promise 22":{
+		"prefix": "promise_24",
+		"body": [
+			"function getPromise(thisPromiseCount) {",
+				"return new Promise((resolve, reject) => {",
+					"window.setTimeout(() => resolve(thisPromiseCount), Math.random() * 2000 + 1000);",
+				"});",
+			"}",
+			"TODO implement missing method",
+			"class MyPromise extends Promise {",
+				"success(resolve, reject) { return this.then( resolve, reject); }",
+				"failure( reject) { return this.catch( reject); }",
+			"}",
+			"let promise = new MyPromise(function(resolve, reject) { ",
+				"resolve(42); ",
+				
+			"}); ",
+			"promise.success(function(value) {",
+				"console.log(value);",
+			"}).failure(function(value) { ",
+				"console.log(value); ",
+			"});"
+		],
+		"description": "promises"
+	},
+
+
+
+
+
+
+
+
+	
+	
+}

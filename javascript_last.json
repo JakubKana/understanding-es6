@@ -1,0 +1,231 @@
+{
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Import 22":{
+		"prefix": "import_22",
+		"body": [
+			"//include / ./ ../ at the begining due to compatibility with browsers",
+			"import defaultExport from \"./modules/module1\";",
+			"import * as name from \"./modules/module1\";",
+			"import { export } from \"./modules/module1\";",
+			"import { export as alias } from \"./modules/module1\";",
+			"import { export1 , export2 } from \"./modules/module1\";",
+			"import { export1 , export2 as alias2 , [...] } from \"./modules/module1\";",
+			"import defaultExport, { export [ , [...] ] } from \"./modules/module1\";",
+			"import defaultExport, * as name from \"./modules/module1\";",
+			"import \"./modules/module1\";"
+		],
+		"description": "generator"
+	},
+	"Import 23":{
+		"prefix": "reexport_23",
+		"body": [
+			"//include / ./ ../ at the begining due to compatibility with browsers",
+			"import sum from \"./modules/module1\";",
+			"export {sum};",
+			"export {sum as add};",
+			"export * from \"./modules/module1\";"
+		],
+		"description": "generator"
+	},
+
+	"Import 24": {
+		"prefix": "logger_22_a",
+		"body":[
+			"let logger = new defaultImport('MyLogger');",
+			"logger.info('Awesome',{obj:'test'},'masdfsdf',true);"
+		],
+		"description": "generator"
+	},
+
+	"Promise101": {
+		"prefix": "thenable_24",
+		"body": [
+			"let thenable = {",
+				"then(reject, resolve) {",
+					"resolve(42);",
+				"}",
+			"}",
+			"thenable.then(null, (result) => {logger.debug(result)});"
+		],
+		"description": "Awesome"
+	},
+
+	"Promise 25":{
+		"prefix": "promise_25",
+		"body": [
+			"function getPromise(thisPromiseCount) {",
+				"return new Promise((resolve, reject) => {",
+					"window.setTimeout(() => {",
+						"logger.info('resolving');",
+						"var randBool = Math.random() >= 0.5;",
+						"if(randBool) {",
+							"resolve(thisPromiseCount)",
+						"}",
+						"reject('RandBool is false');",
+					"}, Math.random() * 2000 + 1000);",
+				"});",
+			"}",
+			"let myPromise = getPromise(55);",
+			"myPromise.then(",
+				"(value) => {",
+			   "setTimeout(",
+				   "()=>{ ",
+					   "logger.info('timeout')",
+				   "}",
+				   ",2000);",
+				"logger.info(value);",
+			"}).catch(reason => logger.error(reason));",
+			
+			"class MyPromise extends Promise {",
+				"success(resolve, reject) { return this.then( resolve, reject); }",
+				"failure( reject) { return this.catch( reject); }",
+			"}",
+			"let promise = new MyPromise(function(resolve, reject) { ",
+				"resolve(42); ",
+				
+			"}); ",
+			"promise.success(function(value) {",
+				"console.log(value);",
+			"}).failure(function(value) { ",
+				"console.log(value); ",
+			"});"
+		],
+		"description": "promises"
+	},
+	"Promise 26": {
+		"prefix": "promise_extending_26",
+		"body": [
+			"let ext = new ExtendedPromise(function(resolve, reject) {",
+				"let random = Math.round(Math.random());",
+				"if(random == 1) {",
+					"resolve(`Resolved ${Math.Random()*10}`);",
+				"} else {",
+					"reject(\"Rejected\");",
+					"}",
+			"});",			
+			"ext.success(function(value) {",
+				"console.log(value);",
+			"}).error(function(value) {",
+				"console.log(value);",
+			"});"
+		],
+		"description": "Awesome"
+	},
+	"Promise 27": {
+		"prefix": "promise_chaining_27",
+		"body": [
+			"let p1 = new Promise(function(resolve, reject) { resolve(42)});",
+			"p1.then(function(value) {",
+				"console.log(value);",
+				"}).then(function(function() {",
+					"console.log(\"Finished\");",
+					"});",
+					"// same as",
+					"let p2 = p1.then(function(value) {",
+						"console.log(value);",
+						"})",
+						"p2.then(function() {",
+							"console.log(\"Finished\");",
+							"});"
+		],
+		"description": "Awesome"
+	},
+	"Promise 28": {
+		"prefix": "promise_methods_28",
+		"body": [
+			"let p1 = new Promise(function(resolve, reject) {",
+				"resolve(42);",
+			"});",
+			"let p2 = new Promise(function(resolve, reject) {",
+				"reject(43);",
+			"});",
+			"let pRace = Promise.race([p1,p2]);",
+			"pRace.catch((value) => {",
+				"console.log(Array.isArray(value));",
+				"console.log(value);",
+			"});",
+			"let pAll = Promise.all([p1,p2]);",
+			"pAll.then(function(value) {",
+				"console.log(Array.isArray(value));",
+				"console.log(value[0]);",
+				"console.log(value[1]);",
+				"console.log(value[2]);",
+			"});"
+		],
+		"description": "Awesome"
+	},
+
+	"Promise 29": {
+		"prefix": "proxies_simple_29",
+		"body": [
+			"let target = {};",
+			"let proxy = new Proxy(target, {});",
+			"proxy.name = \"proxy\";",
+			"console.log(proxy.name);",
+			"console.log(target.name);",
+			"target.name=\"target\";",
+			"console.log(proxy.name);",
+			"console.log(target.name);"
+		],
+		"description": "Proxies"
+	},
+	"Promise 30": {
+		"prefix": "proxies_validating_30",
+		"body": [			
+			"let target1 =  {",
+				"    name: \"target\"",
+				"};",
+				"let proxy1 = new Proxy(target1, {",
+				"    set(target1, key, value, receiver) {",
+				"        // ignore existing properties so as not to affect them",
+				"        if(!target1.hasOwnProperty(key)) {",
+				"            if(isNaN(value)) {",
+				"                throw new TypeError(\"Property must be a number\");",
+				"            }",
+				"        }",
+				"",
+				"        // add the property",
+				"        return Reflect.set(trapTarget, key, value, receiver);",
+				"    },",
+				"    get(target1, key, receiver) {",
+				"        if(!(key in receiver)) {",
+				"            throw new TypeError(`Property ${key} doesn't exist.`);",
+				"        }",
+				"        return Reflect.get(target1, key, receiver);",
+				"",
+				"    ",
+				"    }",
+				"});",
+				"",
+				"proxy1.count = 1;",
+				"console.log(proxy1.count); // 1",
+				"console.log(target1.count); // 1",
+				"",
+				"// you can assign to name because it exists on target already",
+				"proxy1.name = \"proxy\";",
+				"console.log(proxy1.name);",
+				"console.log(target1.name);",
+				"proxy1.surname = \"proxy\";",
+				"// get",
+				"proxy1.name = \"proxy\";",
+				"console.log(proxy1.name);",
+				"console.log(proxy1.middleName);"
+		],
+		"description": "Proxies"
+	}
+
+
+}
