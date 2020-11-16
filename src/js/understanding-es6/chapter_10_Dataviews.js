@@ -7,44 +7,44 @@
 
 // Array.of(); and Array.from();
 
-// let items = new Array(2);
-// console.log(items.length); // 2
-// console.log(items[0]); // undefined
-// console.log(items[1]); // undefined
+let items = new Array(2);
+console.log(items.length); // 2
+console.log(items[0]); // undefined
+console.log(items[1]); // undefined
 
-// console.log("Array with string");
-// items = new Array("2");
-// console.log(items.length); // 1
-// console.log(items[0]); // "2"
+console.log("Array with string");
+items = new Array("2");
+console.log(items.length); // 1
+console.log(items[0]); // "2"
 
-// console.log("Array with numbers");
-// items = new Array(1,2);
-// console.log(items.length);
-// console.log(items[0]);
-// console.log(items[1]);
+console.log("Array with numbers");
+items = new Array(1,2);
+console.log(items.length);
+console.log(items[0]);
+console.log(items[1]);
 
-// console.log("Array with number and string");
-// items = new Array(3, "2");
-// console.log(items.length); // 2
-// console.log(items[0]); // 3
-// console.log(items[1]); // "2"
+console.log("Array with number and string");
+items = new Array(3, "2");
+console.log(items.length); // 2
+console.log(items[0]); // 3
+console.log(items[1]); // "2"
 
 // Array of solve problem with type safety
 // Array of() creates an array containing its argumets regardless of the number of arguments
 // or the argument types
 
-// let items = Array.of(1,2);
-// console.log(items.length); // 2
-// console.log(items[0]); // 1
-// console.log(items[1]); // 2
+let items = Array.of(1,2);
+console.log(items.length); // 2
+console.log(items[0]); // 1
+console.log(items[1]); // 2
 
-// items = Array.of(2);
-// console.log(items.length); // 1
-// console.log(items[0]); // 2
+items = Array.of(2);
+console.log(items.length); // 1
+console.log(items[0]); // 2
 
-// items = Array.of("2");
-// console.log(items.length); // 1
-// console.log(items[0]); // "2"
+items = Array.of("2");
+console.log(items.length); // 1
+console.log(items[0]); // "2"
 
 
 function createArray(arrayCreator, value) {
@@ -58,21 +58,21 @@ console.log(items);
 // The Array.from() method
 // Converting nonarray objects  into actual arrays
 // ECMASCRIPT 5
-// function makeArray(arrayLike) {
-//     let result = [];
-//     for(let i = 0, len = arrayLike.length;i<len; i++) {
-//         result.push(arrayLike[i]);       
-//     }
+function makeArray(arrayLike) {
+    let result = [];
+    for(let i = 0, len = arrayLike.length;i<len; i++) {
+        result.push(arrayLike[i]);       
+    }
 
-//     return result;
-// }
+    return result;
+}
 
-// function doSomething() {
-//     var args = makeArray([1, 2, 3, "Awesome"]);
+function doSomething() {
+    var args = makeArray([1, 2, 3, "Awesome"]);
 
-//     console.log(args);
+    console.log(args);
 
-// }
+}
 
 // ECMAScript 6
 function doSomething(){

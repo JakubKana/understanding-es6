@@ -1,8 +1,8 @@
-//import 'babel-polyfill';
+import 'babel-polyfill';
 
 
 // Chapter 11 Asynchronous programming and Promises
-/*
+
 let rejected;
 
 window.onunhandledrejection = function(event) {
@@ -18,38 +18,37 @@ window.onrejectionhandled = function(event) {
 }
 
 rejected = Promise.reject(new Error("Explosion!"));
-*/
 
 // Chaining Promises
 
 
 
 
-// let p1 = new Promise(function(resolve, reject) {
-//     let random = Math.round(Math.random());
-//     if(random == 1) {
-//         resolve(42);
-//     } else {
-//         reject(44);
-//     }
+let p1 = new Promise(function(resolve, reject) {
+    let random = Math.round(Math.random());
+    if(random == 1) {
+        resolve(42);
+    } else {
+        reject(44);
+    }
    
-// });
+});
 
-// p1.then(function(value) {
-//     console.log("Value");
-// }).then(function() {
-//     console.log("Finished");
-// });
+p1.then(function(value) {
+    console.log("Value");
+}).then(function() {
+    console.log("Finished");
+});
 
-// let p2 = p1.then(function(value) {
-//     console.log('Value');
-// });
+let p2 = p1.then(function(value) {
+    console.log('Value');
+});
 
-// p2.then(function() {
-//     console.log("Finished");
-// });
+p2.then(function() {
+    console.log("Finished");
+});
 
-/*let ext = new ExtendedPromise(function(resolve, reject) {
+let ext = new ExtendedPromise(function(resolve, reject) {
     let random = Math.round(Math.random());
 
     if(random == 1) {
@@ -64,7 +63,7 @@ ext.success(function(value) {
 }).error(function(value) {
     console.log(value);
 });
-*/
+
 
 /**
  * Extended promise

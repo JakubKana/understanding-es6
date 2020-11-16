@@ -181,16 +181,15 @@ console.log(iterator.next().value);
 // Using yeield anywhere else is a syntax error
 // Including in functions that are inside generators, such as:
 
-// function *createIteratorYield() {
-
-//    yield 1;
-//    yield 2;
-//    yield 3;
-//     //  items.forEach(function() {
-//     //      // syntax error
-//     //      yield item + 1;
-//     //  });
-// }
+function *createIteratorYield() {
+   yield 1;
+   yield 2;
+   yield 3;
+      items.forEach(function() {
+          // syntax error
+         yield item + 1;
+      });
+}
 
 // Iterables and for-of Loops
 // Is an object with a Symbol.iterator property
@@ -213,24 +212,24 @@ for (let num of values) {
 //console.log(iteratorDefault.next());
 
 
-// // Creating iterables
-// let customCollection = {
-//     items: [],
-//     *[Symbol.iterator]() {
-//         for (let item of this.items) {
-//             yield item;
-//         }
-//     }
-// };
+// Creating iterables
+let customCollection = {
+    items: [],
+    *[Symbol.iterator]() {
+        for (let item of this.items) {
+            yield item;
+        }
+    }
+};
 
 
-// customCollection.items.push(1);
-// customCollection.items.push(2);
-// customCollection.items.push(3);
+customCollection.items.push(1);
+customCollection.items.push(2);
+customCollection.items.push(3);
 
-// for (let x of customCollection) {
-//     console.log(x);
-// }
+for (let x of customCollection) {
+    console.log(x);
+}
 
 /*
  * !!! Build-in iterators entries(), keys(), values()

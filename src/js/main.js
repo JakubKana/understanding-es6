@@ -3,10 +3,9 @@
  * Proxies targets e.g. Array Problem
  * Proxy passes all methods and properties out as an interface to low level build-in objects
  * It virtualizes the target so the proxy and the target appear to be functionally the same
- * 
  */
 
-/*let target = {};
+let target = {};
 let proxy = new Proxy(target, {});
 
 proxy.name = 'proxy';
@@ -16,7 +15,7 @@ console.log(`Target ${target.name}`);
 target.name = 'target';
 console.log(`Proxy ${proxy.name}`);
 console.log(`Target ${target.name}`);
-*/
+
 // Proxy Traps in JavaScript
 /* 
  * get reading a property value - Reflect.get()
